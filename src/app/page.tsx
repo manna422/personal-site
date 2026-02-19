@@ -27,7 +27,7 @@ const projects: Project[] = [
   {
     title: "SuperTeleSpear",
     description:
-      "A fast-paced action platformer built in Godot. Throw your spear at enemies, then teleport to it to chain kills and cross gaps. Playable in the browser.",
+      "A technical platformer built in Godot. Throw your spear, then teleport to it. Chain movement to clear levels as fast as possible. Deterministic physics enable replays and ghost training for speedrunning.",
     image:
       "https://r2.deskfluence.com/personal-site/projects/telespear/screenshot.png",
     video:
@@ -56,7 +56,7 @@ export default function Home() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mt-4 max-w-xl text-lg text-muted-foreground md:text-xl"
         >
-          Developer, builder, and occasional writer.
+          Developer, designer, and coffee enthusiast.
           <br />I make things and sometimes write about them.
         </motion.p>
       </section>
