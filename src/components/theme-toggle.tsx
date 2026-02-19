@@ -7,13 +7,13 @@ import { useId, useSyncExternalStore } from "react";
 import { cn } from "@/lib/utils";
 
 export function ThemeToggle({ className }: { className?: string }) {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const mounted = useSyncExternalStore(
     () => () => {},
     () => true,
     () => false
   );
-  const isDark = theme === "dark";
+  const isDark = resolvedTheme === "dark";
   const clipId = useId();
 
   if (!mounted) {
