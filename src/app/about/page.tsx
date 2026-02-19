@@ -168,7 +168,7 @@ export default function AboutPage() {
       </section>
 
       {/* Work History */}
-      <section className="pb-24">
+      <section className="pb-16 md:pb-20">
         <motion.h2
           {...fadeUp}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -230,6 +230,44 @@ export default function AboutPage() {
               </ul>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Education */}
+      <section className="pb-24">
+        <motion.h2
+          {...fadeUp}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="font-display text-2xl font-semibold tracking-tight"
+        >
+          Education
+        </motion.h2>
+
+        <div className="mt-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="relative border-l-2 border-border pl-8"
+          >
+            {/* Timeline dot */}
+            <div className="absolute -left-[7px] top-1 h-3 w-3 rounded-full border-2 border-foreground bg-background" />
+
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+              <div>
+                <h3 className="font-display text-lg font-semibold">
+                  Bachelor of Applied Science in Mechatronics Engineering
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  University of Waterloo, Co-operative Program &middot; With
+                  Distinction
+                </p>
+              </div>
+              <span className="shrink-0 text-sm tabular-nums text-muted-foreground">
+                Sep 2012 &ndash; May 2018
+              </span>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>
