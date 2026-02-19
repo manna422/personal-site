@@ -24,6 +24,17 @@ const projects: Project[] = [
       "https://r2.deskfluence.com/personal-site/projects/vcv-36/recording.mp4",
     tags: ["VCV Rack", "Modular Synths", "Ambient"],
   },
+  {
+    title: "SuperTeleSpear",
+    description:
+      "A fast-paced action platformer built in Godot. Throw your spear at enemies, then teleport to it to chain kills and cross gaps. Playable in the browser.",
+    image:
+      "https://r2.deskfluence.com/personal-site/projects/telespear/screenshot.png",
+    video:
+      "https://r2.deskfluence.com/personal-site/projects/telespear/recording.mp4",
+    href: "/projects/telespear",
+    tags: ["Godot", "GDScript", "Indie Game Dev"],
+  },
 ];
 
 export default function Home() {

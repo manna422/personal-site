@@ -43,7 +43,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             className="md:h-full md:aspect-auto"
           />
         ) : (
-          <div className="relative aspect-[16/9] overflow-hidden md:h-full md:aspect-auto">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-t-lg md:rounded-t-none md:rounded-l-lg md:h-full md:aspect-auto">
             <Image
               src={project.image}
               alt={project.title}

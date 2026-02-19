@@ -146,7 +146,7 @@ export function VideoDialog({
         type="button"
         onClick={handleOpen}
         className={cn(
-          "group relative block w-full overflow-hidden rounded-lg focus:outline-none",
+          "group relative block w-full overflow-hidden rounded-t-lg md:rounded-t-none md:rounded-l-lg focus:outline-none",
           className
         )}
         style={{ aspectRatio }}
