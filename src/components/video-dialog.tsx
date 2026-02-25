@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Pause, Play, Volume2, VolumeX, X } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -29,11 +29,38 @@ export function VideoDialog({
   const [progress, setProgress] = useState(0);
   const [isSeeking, setIsSeeking] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const seekBarRef = useRef<HTMLDivElement>(null);
   const hideControlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const animationFrameRef = useRef<number | null>(null);
 
-  const handleOpen = () => setVideoOpen(true);
+  const handleOpen = () => {
+    const isMobile = window.matchMedia("(pointer: coarse)").matches;
+
+    if (isMobile && mobileVideoRef.current) {
+      const video = mobileVideoRef.current;
+      video.currentTime = 0;
+
+      video.play().then(() => {
+        if (
+          "webkitEnterFullscreen" in video &&
+          typeof (video as unknown as Record<string, unknown>)
+            .webkitEnterFullscreen === "function"
+        ) {
+          (video as unknown as { webkitEnterFullscreen: () => void }).webkitEnterFullscreen();
+        } else if (video.requestFullscreen) {
+          video.requestFullscreen();
+        }
+      }).catch(() => {
+        // Fallback to custom dialog if fullscreen fails
+        setVideoOpen(true);
+      });
+
+      return;
+    }
+
+    setVideoOpen(true);
+  };
 
   const handleClose = () => {
     setVideoOpen(false);
@@ -47,6 +74,35 @@ export function VideoDialog({
       cancelAnimationFrame(animationFrameRef.current);
     }
   };
+
+  const resetMobileVideo = useCallback(() => {
+    const video = mobileVideoRef.current;
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  }, []);
+
+  // Clean up mobile video when exiting fullscreen
+  useEffect(() => {
+    const video = mobileVideoRef.current;
+    if (!video) return;
+
+    const handleFullscreenExit = () => {
+      if (!document.fullscreenElement) {
+        resetMobileVideo();
+      }
+    };
+
+    // iOS fires this event when leaving native video fullscreen
+    video.addEventListener("webkitendfullscreen", resetMobileVideo);
+    document.addEventListener("fullscreenchange", handleFullscreenExit);
+
+    return () => {
+      video.removeEventListener("webkitendfullscreen", resetMobileVideo);
+      document.removeEventListener("fullscreenchange", handleFullscreenExit);
+    };
+  }, [resetMobileVideo]);
 
   const updateProgress = () => {
     if (videoRef.current && !isSeeking) {
@@ -165,7 +221,18 @@ export function VideoDialog({
         </div>
       </button>
 
-      {/* Video Overlay */}
+      {/* Hidden video for mobile native fullscreen */}
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      <video
+        ref={mobileVideoRef}
+        src={videoSrc}
+        controls
+        playsInline
+        preload="metadata"
+        className="fixed -left-[9999px] -top-[9999px] h-px w-px"
+      />
+
+      {/* Video Overlay (desktop) */}
       <AnimatePresence>
         {videoOpen && (
           <motion.div
