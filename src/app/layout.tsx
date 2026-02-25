@@ -11,9 +11,45 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://nmanna.com";
+
 export const metadata: Metadata = {
-  title: "Nick Manna",
-  description: "Developer, builder, and occasional writer.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Nick Manna",
+    template: "%s | Nick Manna",
+  },
+  description:
+    "Developer, designer, and coffee enthusiast. I make things and sometimes write about them.",
+  keywords: [
+    "Nick Manna",
+    "software developer",
+    "full stack developer",
+    "portfolio",
+    "HazelDesk",
+    "Frontdeskify",
+  ],
+  authors: [{ name: "Nick Manna" }],
+  creator: "Nick Manna",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Nick Manna",
+    title: "Nick Manna",
+    description:
+      "Developer, designer, and coffee enthusiast. I make things and sometimes write about them.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Nick Manna",
+    description:
+      "Developer, designer, and coffee enthusiast. I make things and sometimes write about them.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: [
       { url: "/icon-16.png", sizes: "16x16", type: "image/png" },
