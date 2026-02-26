@@ -39,12 +39,14 @@ export const metadata: Metadata = {
     title: "Nick Manna",
     description:
       "Developer, designer, and coffee enthusiast. I make things and sometimes write about them.",
+    images: [{ url: "/avatar-nick.png" }],
   },
   twitter: {
     card: "summary",
     title: "Nick Manna",
     description:
       "Developer, designer, and coffee enthusiast. I make things and sometimes write about them.",
+    images: ["/avatar-nick.png"],
   },
   robots: {
     index: true,
