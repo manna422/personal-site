@@ -56,21 +56,8 @@ const workHistory: WorkEntry[] = [
     title: "Software Developer",
     company: "Apple",
     location: "Cupertino, CA",
-    startDate: "May 2017",
-    endDate: "Aug 2017",
-    tags: ["Python", "Swift", "Objective-C"],
-    description: [
-      "Authored ApplePay terminal certification spec, adopted by 2 major payment terminal manufacturers.",
-      "Designed distributed async testing architecture, adopted by 8 internal teams.",
-      "Authored test plan for new iOS accessory platform, accepted for implementation.",
-    ],
-  },
-  {
-    title: "Software Developer",
-    company: "Apple",
-    location: "Cupertino, CA",
-    startDate: "Sep 2016",
-    endDate: "Dec 2016",
+    startDate: "Sep – Dec 2016; May – Aug 2017",
+    endDate: "",
     tags: ["Python", "Swift", "Objective-C"],
     description: [
       "Authored ApplePay terminal certification spec, adopted by 2 major payment terminal manufacturers.",
@@ -199,7 +186,13 @@ export default function AboutPage() {
                   </p>
                 </div>
                 <span className="shrink-0 text-sm tabular-nums text-muted-foreground">
-                  {entry.startDate} &ndash; {entry.endDate}
+                  {entry.endDate ? (
+                    <>
+                      {entry.startDate} &ndash; {entry.endDate}
+                    </>
+                  ) : (
+                    entry.startDate
+                  )}
                 </span>
               </div>
 

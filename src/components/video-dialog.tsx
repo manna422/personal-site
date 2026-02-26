@@ -41,20 +41,25 @@ export function VideoDialog({
       const video = mobileVideoRef.current;
       video.currentTime = 0;
 
-      video.play().then(() => {
-        if (
-          "webkitEnterFullscreen" in video &&
-          typeof (video as unknown as Record<string, unknown>)
-            .webkitEnterFullscreen === "function"
-        ) {
-          (video as unknown as { webkitEnterFullscreen: () => void }).webkitEnterFullscreen();
-        } else if (video.requestFullscreen) {
-          video.requestFullscreen();
-        }
-      }).catch(() => {
-        // Fallback to custom dialog if fullscreen fails
-        setVideoOpen(true);
-      });
+      video
+        .play()
+        .then(() => {
+          if (
+            "webkitEnterFullscreen" in video &&
+            typeof (video as unknown as Record<string, unknown>)
+              .webkitEnterFullscreen === "function"
+          ) {
+            (
+              video as unknown as { webkitEnterFullscreen: () => void }
+            ).webkitEnterFullscreen();
+          } else if (video.requestFullscreen) {
+            video.requestFullscreen();
+          }
+        })
+        .catch(() => {
+          // Fallback to custom dialog if fullscreen fails
+          setVideoOpen(true);
+        });
 
       return;
     }
