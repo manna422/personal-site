@@ -36,6 +36,16 @@ const projects: Project[] = [
     href: "/projects/telespear",
     tags: ["Godot", "GDScript", "Indie Game Dev"],
   },
+  {
+    title: "Wall Climbing Robot",
+    description:
+      "An autonomous robot built for UW's MTE380 in 2017. The challenge: get across a barrier and reach a destination without human input. Our team went with magnet-embedded wheels to climb over obstacles. An ambitious approach that pushed everything we'd learned to that point.",
+    image:
+      "https://r2.deskfluence.com/personal-site/projects/mte-380/preview.jpg",
+    video:
+      "https://r2.deskfluence.com/personal-site/projects/mte-380/mte-380.mp4",
+    tags: ["Autonomous Robotics", "Arduino", "Mechatronics"],
+  },
 ];
 
 export default function Home() {
@@ -87,7 +97,7 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="font-display text-2xl font-semibold tracking-tight"
         >
-          Recent Projects
+          Projects
         </motion.h2>
         <div className="mt-8 grid gap-6">
           {projects.map((project, i) => (
