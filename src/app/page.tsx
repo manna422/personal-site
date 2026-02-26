@@ -23,7 +23,7 @@ const projects: Project[] = [
       "https://r2.deskfluence.com/personal-site/projects/vcv-36/preview.png",
     video:
       "https://r2.deskfluence.com/personal-site/projects/vcv-36/recording.mp4",
-    tags: ["VCV Rack", "Modular Synths", "Ambient"],
+    tags: ["Music Production", "VCV Rack", "Modular Synths"],
   },
   {
     title: "SuperTeleSpear",
@@ -34,7 +34,7 @@ const projects: Project[] = [
     video:
       "https://r2.deskfluence.com/personal-site/projects/telespear/recording.mp4",
     href: "/projects/telespear",
-    tags: ["Godot", "GDScript", "Indie Game Dev"],
+    tags: ["Game Dev", "Godot", "GDScript"],
   },
   {
     title: "Wall Climbing Robot",
@@ -44,7 +44,7 @@ const projects: Project[] = [
       "https://r2.deskfluence.com/personal-site/projects/mte-380/preview.jpg",
     video:
       "https://r2.deskfluence.com/personal-site/projects/mte-380/mte-380.mp4",
-    tags: ["Autonomous Robotics", "Arduino", "Mechatronics"],
+    tags: ["Mechatronics", "Autonomous Robotics", "Arduino"],
   },
 ];
 
