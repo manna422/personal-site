@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 import { ProjectCard, type Project } from "@/components/project-card";
 
@@ -41,24 +42,41 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-5xl px-6">
       {/* Hero */}
-      <section className="pb-16 pt-24 md:pb-24 md:pt-36">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+      <section className="flex flex-col-reverse items-center gap-8 pb-16 pt-24 md:flex-row md:items-center md:justify-between md:gap-12 md:pb-24 md:pt-36 md:px-10">
+        <div>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
+          >
+            Nick Manna
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mt-4 max-w-xl text-lg text-muted-foreground md:text-xl"
+          >
+            Developer, designer, and coffee enthusiast.
+            <br />I make things and sometimes write about them.
+          </motion.p>
+        </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
+          className="shrink-0"
         >
-          Nick Manna
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mt-4 max-w-xl text-lg text-muted-foreground md:text-xl"
-        >
-          Developer, designer, and coffee enthusiast.
-          <br />I make things and sometimes write about them.
-        </motion.p>
+          <Image
+            src="/avatar-nick.png"
+            alt="Nick Manna"
+            width={176}
+            height={176}
+            priority
+            className="rounded-full border-2 border-primary md:h-48 md:w-48"
+          />
+        </motion.div>
       </section>
 
       {/* Projects */}
