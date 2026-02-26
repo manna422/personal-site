@@ -16,9 +16,9 @@ interface WorkEntry {
 
 const workHistory: WorkEntry[] = [
   {
-    title: "Founder / Solo Developer",
+    title: "Founder / Developer",
     company: "Frontdeskify Inc",
-    location: "Self-employed",
+    location: "Toronto, ON",
     startDate: "Jan 2024",
     endDate: "Present",
     tags: [
@@ -31,30 +31,39 @@ const workHistory: WorkEntry[] = [
       "Tailwind",
     ],
     description: [
-      "Built full-stack SaaS from zero to live product in 6 months, now serving 120 businesses.",
+      "Built full-stack SaaS from zero to live product in 6 months, now serving 200+ businesses.",
       "Conducted customer discovery with 10 service business owners to shape product direction.",
       "Architected multi-tenant platform with white-label websites, custom domains, and payment processing (Stripe, PayPal, Apple Pay, Google Pay).",
-      "Built email infrastructure on AWS SES with scheduling, bounce handling, and compliance (CAN-SPAM, GDPR).",
+      "Built email infrastructure on AWS SES with scheduling, bounce handling, and compliance (GDPR, CAN-SPAM).",
     ],
   },
   {
-    title: "Director of Shared Infrastructure / Team Lead",
-    company: "Game Hive",
+    title:
+      "Product Team Lead / Director of Shared Infrastructure / Server Developer",
+    company: "GameHive Corporation",
     location: "Toronto, ON",
     startDate: "Jul 2018",
     endDate: "Dec 2023",
-    tags: ["Python", "Kubernetes", "GCP", "AWS", "PostgreSQL", "Redis"],
+    tags: [
+      "Python",
+      "Kubernetes",
+      "GCP",
+      "AWS",
+      "PostgreSQL",
+      "Redis",
+      "Terraform",
+    ],
     description: [
-      "Proposed and built two new teams from scratch: a 6-person product team and a shared infrastructure team.",
+      "Proposed and built two new teams from scratch: a 5-developer product team and a DevOps-focused Shared Infrastructure team.",
       "Led product team to launch a new mobile game title in 4 months, capitalizing on first-mover advantage.",
-      "Took company from zero BI capability to data-driven decisions by building analytics and A/B testing infrastructure.",
+      "Took company from zero BI to full analytics and A/B testing capability, then hired a dedicated BI team to scale and own the function.",
       "Saved $40K+/month through backend optimization of legacy services.",
-      "Built scalable game server infrastructure handling 300k+ DAU using Python, Kubernetes, GCP, PostgreSQL.",
+      "Built scalable game server infrastructure handling 300k+ DAU with 99.99% uptime and sub-3-minute deployments.",
     ],
   },
   {
     title: "Software Developer",
-    company: "Apple",
+    company: "Apple Inc",
     location: "Cupertino, CA",
     startDate: "Sep – Dec 2016; May – Aug 2017",
     endDate: "",
@@ -80,10 +89,10 @@ const workHistory: WorkEntry[] = [
   },
   {
     title: "Software Designer",
-    company: "Evertz",
+    company: "Evertz Microsystems Inc",
     location: "Burlington, ON",
-    startDate: "Jan 2015",
-    endDate: "Apr 2015",
+    startDate: "May - Sep 2014; Jan – May 2015",
+    endDate: "",
     tags: ["Python", "Linux", "Bash"],
     description: [
       "Reduced automated build time from 30 minutes to 2 minutes.",
@@ -94,7 +103,7 @@ const workHistory: WorkEntry[] = [
   },
   {
     title: "Software Developer",
-    company: "Autodesk",
+    company: "Autodesk Inc",
     location: "Montreal, QC",
     startDate: "Sep 2013",
     endDate: "Dec 2013",
@@ -106,7 +115,7 @@ const workHistory: WorkEntry[] = [
   },
   {
     title: "Software Developer",
-    company: "EXO U Inc.",
+    company: "EXO U Inc",
     location: "Montreal, QC",
     startDate: "Feb 2013",
     endDate: "May 2013",
@@ -176,16 +185,11 @@ export default function AboutPage() {
               {/* Timeline dot */}
               <div className="absolute -left-[7px] top-1 h-3 w-3 rounded-full border-2 border-foreground bg-background" />
 
-              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                <div>
-                  <h3 className="font-display text-lg font-semibold">
-                    {entry.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {entry.company} &middot; {entry.location}
-                  </p>
-                </div>
-                <span className="shrink-0 text-sm tabular-nums text-muted-foreground">
+              <div className="grid gap-1 sm:grid-cols-[1fr_auto]">
+                <h3 className="font-display text-lg font-semibold">
+                  {entry.company}
+                </h3>
+                <span className="shrink-0 text-sm tabular-nums text-muted-foreground sm:self-center">
                   {entry.endDate ? (
                     <>
                       {entry.startDate} &ndash; {entry.endDate}
@@ -194,6 +198,9 @@ export default function AboutPage() {
                     entry.startDate
                   )}
                 </span>
+                <p className="text-sm text-muted-foreground sm:col-span-2">
+                  {entry.title} &middot; {entry.location}
+                </p>
               </div>
 
               {entry.tags.length > 0 && (
